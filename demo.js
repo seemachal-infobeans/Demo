@@ -13,6 +13,20 @@ item[2].textContent ="item changed";
 const li =  document.getElementsByTagName('li');
 
    li[4].style.fontWeight="bold";
+
+   //By querySelector
+
+   const list = document.querySelectorAll('li');
+   list[1].style.color="green";
+   list[2].style.visibility="hidden"
+
+   for (let j = 0; j < item.length; j++) {
+    if(j%2!=0){
+      list[j].style.backgroundColor = "lightgreen";
+    }
+    
+  }
+
  
 
  
