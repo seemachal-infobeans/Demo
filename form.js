@@ -6,7 +6,19 @@ function displayUserData(userData) {
       var listItem = document.createElement("li");
       listItem.className = "list-group-item d-flex justify-content-between align-items-center";
       listItem.innerHTML = data.name + " - " + data.email + " - " + data.mobile;
-      
+      ///edit buttton
+      var editButton = document.createElement("button");
+      editButton.className = "btn btn-primary btn-sm mr-2";
+      editButton.textContent = "Edit";
+      editButton.addEventListener("click", function() {
+          var newEmail = prompt("Enter new email:", data.email);
+          if (newEmail !== null) {
+              userData[index].email = newEmail;
+              localStorage.setItem("formData", JSON.stringify(userData));
+              displayUserData(userData);
+          }
+      });
+      //delete button
       var deleteButton = document.createElement("button");
       deleteButton.className = "btn btn-danger btn-sm";
       deleteButton.textContent = "Delete";
@@ -17,6 +29,7 @@ function displayUserData(userData) {
       });
       
       listItem.appendChild(deleteButton);
+      listItem.appendChild(editButton);
       list.appendChild(listItem);
     });
   }
